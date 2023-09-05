@@ -1,0 +1,11 @@
+{% load new2_tags %}
+{%get_list_professions as professions%}
+{% comment%}
+<!--<div class="list-group">-->
+<!--   {%get_list_professions as professions%}-->
+<!--          {% for cat in professions %}-->
+<!--          <a href="{% url 'Profession' cat.id %}" class="list-group-item list-group-item-action">{{ cat.title }}<span class="badge bg-primary rounded-pill" style = "width:30px; color:white;"> 14 </span></a>-->
+<!--          {% endfor %}-->
+<!--</div>-->
+{% endcomment %}
+{% show_professions %}

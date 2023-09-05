@@ -1,0 +1,36 @@
+{%extends 'base.html'%}
+
+{%block title%}
+{{title}} :: {{block.super}}
+{%endblock%}
+
+{%block sidebar%}
+{%include 'inc/_sidebar.html'%}
+{%endblock%}
+
+{{%block content%}
+<div class="card mb-3" style="width:1300px;">
+  {{ forloop.counter }}
+  <div class="card-header">
+    Профессия: <a href="{{item.profession.get_absolute_url}}">{{ humans_item.profession.title }}</a>
+  </div>
+  <div class="card-body">
+       {% if humans_item.Photo %}
+        <img src="{{ humans_item.Photo.url }}" class="mr-3" width="500" height="400" alt="Photo" style="margin-left:350px;">
+        {% else %}
+        <h6>Фото нет</h6>
+        {% endif %}
+  </div>
+    <h5 class="card-title {% cycle 'text-success' 'text-danger' 'text-primary' %}" style="margin-left:550px; margin-top:10px;">Пользователь {{humans_item.id}}</h5>
+    {% autoescape off %}
+  <div class="name+surname" style="margin-left:570px;">
+    <p class="card-text">{{humans_item.Name}}{{' '}}{{humans_item.Surname}}</p>
+  </div>
+    {% endautoescape %}
+    <div class="card-footer text-body-secondary">
+      <div class="data" style="margin-left:530px;">
+        {{humans_item.Date_of_birth|date:'Y-m-d H:i'}}
+      </div>
+    </div>
+</div>
+{%endblock%}
